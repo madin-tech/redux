@@ -1,0 +1,77 @@
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+
+
+/* .card{
+  display: flex;
+  flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    border: 1px solid black;
+    padding-bottom: 30px;
+    border-radius: 8px;
+
+}
+.card-bottom{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 300px;
+  height: 50px;
+  background-color: red;
+}
+.card-bottom button{
+  width: 100%;
+  padding: 8px 10px;
+} */
+
+.addBtnBox {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.nav a.active {
+    color: blue;
+    text-decoration: underline;
+}
+
+.nav a {
+    text-decoration: none;
+}
+
+.carousel3 {
+    height: 100%;
+    width: 100%;
+    background-image: url("../src/assets/carousel3.webp");
+
+}
+
+.footerA {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.footerBox {
+    display: flex;
+    flex-direction: row;
+    gap: 100px;
+}
+
+.footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+footer {
+    background-color: lightblue;
+    padding: 85px 0;
+}

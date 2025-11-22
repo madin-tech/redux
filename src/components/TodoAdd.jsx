@@ -1,8 +1,12 @@
 import { useDispatch } from "react-redux";
 import { addTodo } from "../store/todoSlice";
 import TodoList from "./TodoList";
-import { useRef } from "react";
+import { Button, Input } from "antd";
+import { useRef, useState } from "react";
 const TodoAdd = () => {
+  const [value, setValue] = useState("");  
+    
+
  const dispatch = useDispatch();
   const ref =useRef();
  
@@ -14,15 +18,35 @@ const TodoAdd = () => {
       checked: false  
     }
   dispatch(addTodo(newTodo));
-  ref.current.reset();
+ setValue("");
+
+ 
  
 }
   return (
     <>
-      <div style={{display:`flex`, alignItems:`center`, justifyContent:`center`}}>
-        <form action="" onSubmit={handleSubmit} ref={ref} >
-          <input type="text" placeholder="todo kiriting" />
-          <button type="submit">add</button>
+      <div
+        style={{
+          display: `flex`,
+          alignItems: `center`,
+          justifyContent: `center`,
+        }}
+      >
+        <form
+          action=""
+          onSubmit={handleSubmit}
+          ref={ref}
+          style={{ display: `flex`, flexDirection: `row`, gap: 6 }}
+        >
+          <Input
+            type="text"
+            value={value}
+            placeholder="Enter image url"
+            onChange={(e) => setValue(e.target.value)}
+          />
+          <Button type="primary" htmlType="submit">
+            Log in
+          </Button>
         </form>
       </div>
     </>

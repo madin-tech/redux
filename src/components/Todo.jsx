@@ -2,6 +2,7 @@ import { useDispatch } from "react-redux"
 import { delTodo, editTodo } from "../store/todoSlice";
 import { toggleTodo } from "../store/todoSlice";
 import { useState } from "react";
+import { Button, Checkbox } from "antd";
 const Todo = ({todo}) => {
 const dispatch = useDispatch();
 const [editId, setEditId] = useState(null);
@@ -22,6 +23,7 @@ dispatch(editTodo(editedTodo));
 setEditId(null);
 
 }
+console.log(todo.checked);
 
 return (
   <div
@@ -32,15 +34,16 @@ return (
       alignItems: `center`,
     }}
   >
-    <input
-      type="checkbox"
+    <Checkbox
+      defaultChecked={todo.checked}
       onChange={() => dispatch(toggleTodo(todo.id))}
-      defaultValue={todo.checked}
-    />
+    ></Checkbox>
     {!editId ? (
-      <h5 style={{ textDecoration: todo.checked ? "line-through" : "none" }}>
-        {todo.title}
-      </h5>
+      <div >
+        <h4 style={{ textDecoration: todo.checked ? "line-through" : "none" }}>
+          {todo.title}
+        </h4>
+      </div>
     ) : (
       <input
         type="text"
@@ -48,11 +51,25 @@ return (
         onChange={(e) => setValue(e.target.value)}
       />
     )}
-    <button onClick={() => dispatch(delTodo(todo.id))}>del</button>
+    <Button
+      type="dashed"
+      onClick={() => dispatch(delTodo(todo.id))}
+      htmlType="submit"
+    >
+      Delete
+    </Button>
     {!editId ? (
-      <button onClick={() => setEditId(todo.id)}>edit</button>
+      <Button
+        type="dashed"
+        onClick={() => setEditId(todo.id)}
+        htmlType="submit"
+      >
+        Edit
+      </Button>
     ) : (
-      <button onClick={handleSave}>save</button>
+      <Button type="dashed" onClick={handleSave} htmlType="submit">
+        Save
+      </Button>
     )}
   </div>
 );

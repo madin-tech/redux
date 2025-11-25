@@ -1,26 +1,33 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    products: [
-        {
-            imgUrl: "",
-            title: "",
-            des: "",
-        }
-    ],
+    products: [],
 }
 
 export const ProductSlice = createSlice({
   name: "ProductSlice",
   initialState,
   reducers: {
-    addImg: (state, action) => {},
-    addTitle: (state, action) => {},
-    addDes: (state, action) => {},
-    del: (state, action) => {},
-    edit: (state, action) => {},
+    addProduct: (state, action) => {
+     state.products = [action.payload, ...state.products];
+      // state.products = action.payload.title;
+      // state.products = action.payload.des;
+   
+     
+     
+    },
+    del: (state, action) => {
+     state.products = state.products.filter((product)=>product.id!==action.payload);
+    },
+    edit: (state, action) => {
+     state.products.map((product)=>{
+      if(product.id == action.payload.id){
+        return []
+      }
+     })
+    },
   },
 });
 
-export const {addImg, addTitle, addDes, del, edit} = ProductSlice.actions;
+export const { addProduct, del, edit } = ProductSlice.actions;
 export default ProductSlice.reducer;

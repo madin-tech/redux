@@ -5,9 +5,14 @@ import { openDrawer } from "../store/userSlice";
 import { useSelector } from "react-redux";
 import { UserOutlined } from "@ant-design/icons";
 import { Avatar } from "antd";
+import {logout} from  "../store/userSlice";
+
 const ProfileDrawer = () => {
+
+    const { user, isAuth} = useSelector((state) => state.userReducer);
      const dispatch = useDispatch();
       const { open } = useSelector((state) => state.userReducer);
+
       
       const [placement, setPlacement] = useState("right");
       const showDrawer = () => {
@@ -19,7 +24,10 @@ const ProfileDrawer = () => {
       const onClose = () => {
         dispatch(openDrawer(false));
       };
-      
+    function log(){
+      dispatch(logout());
+      dispatch(openDrawer(false));
+    }  
   return (
     <>
       <Drawer
@@ -29,9 +37,22 @@ const ProfileDrawer = () => {
         onClose={onClose}
         open={open}
       >
-        <Avatar shape="square" size={64} icon={<UserOutlined />} />
-        <p>Some contents...</p>
-        <p>Some contents...</p>
+        <div
+          style={{
+            display: `flex`,
+            flexDirection: `column`,
+            gap: 10,
+            alignItems: `center`,
+            justifyContent: `center`,
+          }}
+        >
+          <Avatar shape="square" size={64} icon={<UserOutlined />} />
+          <p><b>UserName:</b> {user}</p>
+          <p><b>Password: </b> {isAuth}</p>
+          <Button type="dashed" htmlType="submit" style={{marginTop:`20px`}} onClick={log}>
+            Log Out
+          </Button>
+        </div>
       </Drawer>
     </>
   );

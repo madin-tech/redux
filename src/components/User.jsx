@@ -12,7 +12,7 @@ const User = () => {
     const dispatch = useDispatch();
 const { isAuth, user } = useSelector((state) => state.userReducer);
   const onFinish = (values) => {
-    console.log("Received values of form: ", values);
+    
      dispatch(loginName(values.username));
       dispatch(loginPass(values.password));
       navigate(-1);
@@ -29,6 +29,7 @@ navigate(-1);
         justifyContent: `center`,
       }}
     >
+    
       <div style={{display:`flex`, flexDirection:`row`, gap:`40px`, alignItems:`start`}}>
         <img src={xmark} style={{height:20, width:20, cursor:`pointer`}} onClick={closeLogin} alt="" />
         <Form

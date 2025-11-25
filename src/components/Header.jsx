@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import ProfileDrawer from "./ProfileDrawer";
 import { openDrawer } from "../store/userSlice";
+import { Button } from "antd";
 const Header = () => {
   const {isAuth, user} = useSelector((state) => state.userReducer);
   const dispatch = useDispatch();
@@ -33,12 +34,21 @@ function openDraw(){
           alignItems: `center`,
         }}
       >
-        <Link to="/">Todo</Link>
-        <Link to="/cards">Cards</Link>
-        <Link to="/profile">Profile</Link>
-        {
-          !(isAuth && user) ? <button onClick={openLogin}>Login</button> : <img onClick={openDraw} style={{height:25, width:25}} src={profile} alt="" /> 
-        }
+        <NavLink to="/">Todos</NavLink>
+        <NavLink to="/products">Products</NavLink>
+        <NavLink to="/profile">Profile</NavLink>
+        {!(isAuth && user) ? (
+          <Button type="default" onClick={openLogin} htmlType="submit">
+            Log in
+          </Button>
+        ) : (
+          <img
+            onClick={openDraw}
+            style={{ height: 25, width: 25 }}
+            src={profile}
+            alt=""
+          />
+        )}
       </nav>
     </header>
   );

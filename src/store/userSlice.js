@@ -24,7 +24,7 @@ const initialState = {
         },
         openDrawer:(state, action)=>{
              state.open = action.payload;
-             console.log(state.open);
+            
              
         }
     }

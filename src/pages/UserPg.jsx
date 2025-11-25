@@ -6,7 +6,7 @@ import User from "../components/User"
 const UserPg = () => {
   return (
     <div>
-      <div style={{display:`flex`, flexDirection:`row`, gap:100}}>
+      <div className="container" style={{display:`flex`, flexDirection:`row`, alignItems:`center`, justifyContent:`center`, marginTop:70, gap:`300px`,marginBottom:100}}>
         <TodoAdd />
         <ProductAdd/>
       </div>

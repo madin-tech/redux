@@ -3,8 +3,11 @@
     margin: 0 auto;
 }
 
-
-
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 /* .card{
   display: flex;
   flex-direction: column;
@@ -73,5 +76,13 @@
 
 footer {
     background-color: lightblue;
-    padding: 85px 0;
+    padding: 40px 0;
+    margin-top: 60px;
+}
+.productImg{
+    height: 200px;
+     width: 200px;
+}
+nav a.active {
+    color: green;
 }

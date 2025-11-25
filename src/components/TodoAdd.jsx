@@ -30,8 +30,11 @@ const TodoAdd = () => {
           display: `flex`,
           alignItems: `center`,
           justifyContent: `center`,
+          flexDirection: `column`,
+          gap: `20px`,
         }}
       >
+        <h3>Add Todo</h3>
         <form
           action=""
           onSubmit={handleSubmit}
@@ -45,7 +48,7 @@ const TodoAdd = () => {
             onChange={(e) => setValue(e.target.value)}
           />
           <Button type="primary" htmlType="submit">
-            Log in
+        Add
           </Button>
         </form>
       </div>
